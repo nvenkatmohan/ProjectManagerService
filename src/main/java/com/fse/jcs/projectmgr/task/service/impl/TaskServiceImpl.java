@@ -171,7 +171,7 @@ public class TaskServiceImpl implements TaskService {
 		task.setStartDateStr(startDate);
 		task.setEndDateStr(endDate);
 		
-		if(null == task.getEndDate() || (null != task.getEndDate() && task.getEndDate().after(today))) {
+		if(null == task.getEndDate() || task.getEndDate().after(today)) {
 			task.setCompleted("N");
 		} else {
 			task.setCompleted("Y");
