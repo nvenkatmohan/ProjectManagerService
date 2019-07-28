@@ -40,7 +40,7 @@ public class ProjectController {
 	 * @return Project
 	 */
 	@RequestMapping(value = "/fetch/{projectId}", method = RequestMethod.GET)
-	public Project fetchUserById(@PathVariable Integer projectId) {
+	public Project fetchProjectById(@PathVariable Integer projectId) {
 		
 		return this.projectService.fetchProjectById(projectId);
 	}
@@ -52,7 +52,7 @@ public class ProjectController {
 	 * @return Project
 	 */
 	@RequestMapping(value = "/{projectName}", method = RequestMethod.GET)
-	public Project fetchUserById(@PathVariable String projectName) {
+	public Project fetchProjectByName(@PathVariable String projectName) {
 		
 		return this.projectService.fetchProjectByProjectName(projectName);
 	}
@@ -74,7 +74,7 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping(value = "/addproject", method = RequestMethod.POST)
-	public void saveUser(@RequestBody Project project) throws ParseException {
+	public void saveProject(@RequestBody Project project) throws ParseException {
 		
 		this.projectService.saveProject(project,false);
 	}

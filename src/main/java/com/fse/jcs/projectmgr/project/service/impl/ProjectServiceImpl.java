@@ -47,9 +47,12 @@ public class ProjectServiceImpl implements ProjectService {
 
 		Project project = this.projectDao.fetchProjectById(projectId);
 		
-		convertStartAndEndDatesToString(project);
-		setManagerName(project);
-		setNumberOfTasksForAProject(project);
+		if(project != null) {
+			
+			convertStartAndEndDatesToString(project);
+			setManagerName(project);
+			setNumberOfTasksForAProject(project);
+		}
 		
 		return project;
 	}
@@ -89,9 +92,10 @@ public class ProjectServiceImpl implements ProjectService {
 	public void saveProject(Project project, boolean isUpdate) throws ParseException {
 		
 		SimpleDateFormat dateFrmt = new SimpleDateFormat(DATE_PATTERN);
+		dateFrmt.setLenient(false);
 		
 		project.setStartDate(dateFrmt.parse(project.getStartDateStr()));
-		project.setEndDate(dateFrmt.parse(project.getEndDateStr()));
+		project.setEndDate(dateFrmt.parse(project.getEndDateStr()));	
 		
 		Date today = Calendar.getInstance().getTime();
 		
